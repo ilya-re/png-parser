@@ -71,24 +71,22 @@ namespace png_parser
 			using var img_file = new FileStream(filename, FileMode.Open, FileAccess.Read);
 			using var reader = new BinaryReader(img_file, System.Text.Encoding.ASCII);
 			byte[] file_header = reader.ReadBytes(8);
-			string error_msg = string.Empty;
 			// Check if the file is not empty
 			bool file_is_empty = file_header.Length == 0;
-			if (file_is_empty) { error_msg = "The file is empty."; }
-			// Check if the file is PNG
-			bool file_is_not_png = !file_header.SequenceEqual(PNG_HEADER);
-			if (file_is_not_png) { error_msg = "The file does not start with a PNG header."; }
-			// If either check has failed, print the error message and exit
-			if (file_is_empty || file_is_not_png) {
-				Console.WriteLine(error_msg);
+			if (file_is_empty) {
+				Console.WriteLine("The file is empty.");
 				return 1;
 			}
-			else {
-				Console.WriteLine("PNG header - OK");
-				string chunk_type;
-				bool eof;
-				do { chunk_type = ReadChunk(img_file, reader, out eof); } while (!(eof || chunk_type == "IEND"));
+			// Check if the file is PNG
+			bool file_is_not_png = !file_header.SequenceEqual(PNG_HEADER);
+			if (file_is_not_png) {
+				Console.WriteLine("The file does not start with a PNG header.");
+				return 1;
 			}
+			Console.WriteLine("PNG header - OK");
+			string chunk_type;
+			bool eof;
+			do { chunk_type = ReadChunk(img_file, reader, out eof); } while (!(eof || chunk_type == "IEND"));
 			return 0;
 		}
 	}
