@@ -1,0 +1,32 @@
+{
+	"IHDR": "Image header",
+	"PLTE": "Palette",
+	"IDAT": "Image data",
+	"IEND": "Image end",
+
+	"tRNS": "Transparency",
+	"cHRM": "Primary chromaticities and white point",
+	"gAMA": "Image gamma",
+	"iCCP": "ICC profile",
+	"sBIT": "Number of significant bits",
+	"sRGB": "sRGB color space",
+	"cICP": "Coding-independent color points",
+	"mDCV": "Mastering Display Color Volume",
+	"cLLI": "Content Light Level Information",
+
+	"tEXt": "Textual data",
+	"zTXt": "Compressed textual data",
+	"iTXt": "International textual data",
+
+	"bKGD": "Background color",
+	"hIST": "Image histogram",
+	"pHYs": "Physical pixel dimensions",
+	"sPLT": "Suggested palette",
+
+	"eXIf": "Exchangeable Image File (Exif) Profile",
+	"tIME": "Image last-modification time",
+	"acTL": "Animation Control Chunk",
+	"fcTL": "Frame Control Chunk",
+	"fdAT": "Frame Data Chunk"
+
+}
