@@ -57,7 +57,7 @@ namespace png_parser
 		static int Main(string[] args) {
 			if (args.Length == 0) {
 				Console.WriteLine($"Usage: {Path.GetFileName(exe_path)} -i <filename> [--print-text]");
-				Environment.Exit(0);
+				return 0;
 			}
 			string? filename = null;
 			for (int i = 0; i < args.Length; i++) {
