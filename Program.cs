@@ -72,14 +72,12 @@ namespace png_parser
 			using var reader = new BinaryReader(img_file, System.Text.Encoding.ASCII);
 			byte[] file_header = reader.ReadBytes(8);
 			// Check if the file is not empty
-			bool file_is_empty = file_header.Length == 0;
-			if (file_is_empty) {
+			if (file_header.Length == 0) {
 				Console.WriteLine("The file is empty.");
 				return 1;
 			}
 			// Check if the file is PNG
-			bool file_is_not_png = !file_header.SequenceEqual(PNG_HEADER);
-			if (file_is_not_png) {
+			if (!file_header.SequenceEqual(PNG_HEADER)) {
 				Console.WriteLine("The file does not start with a PNG header.");
 				return 1;
 			}
