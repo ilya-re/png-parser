@@ -68,7 +68,23 @@ namespace png_parser
 				Console.WriteLine("No filename specified.");
 				return 1;
 			}
-			using var img_file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+			if (Directory.Exists(filename)) {
+				Console.WriteLine($"{filename} is a directory, not a file.");
+				return 1;
+			}
+			FileStream file_stream;
+			try {
+				file_stream = new FileStream(filename, FileMode.Open, FileAccess.Read);
+			}
+			catch (FileNotFoundException e) {
+				Console.WriteLine(e.Message);
+				return 1;
+			}
+			catch (UnauthorizedAccessException e) {
+				Console.WriteLine(e.Message);
+				return 1;
+			}
+			using FileStream img_file = file_stream;
 			using var reader = new BinaryReader(img_file, System.Text.Encoding.ASCII);
 			byte[] file_header = reader.ReadBytes(8);
 			// Check if the file is not empty
